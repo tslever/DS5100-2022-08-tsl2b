@@ -36,7 +36,7 @@ class BookLover:
         email,
         fav_genre,
         num_books = 0,
-        book_list = pd.DataFrame({'book_name':[], 'book_rating':[]}).astype(dtype = {'book_name': 'str', 'book_rating': 'int'})
+        book_list = pd.DataFrame({'book_name':[], 'book_rating':[]}).astype(dtype = {'book_name': str, 'book_rating': int})
     ):
         '''
         Initializes a BookLover
