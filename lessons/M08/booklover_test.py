@@ -37,7 +37,6 @@ class BookLoverTestSuite(unittest.TestCase):
         '''
 
         self.book_lover = BookLover('Han Solo', 'hsolo@millenniumfalcon.com', 'scifi')
-        #self.book_lover = BookLover('Han Solo', 'hsolo@millenniumfalcon.com', 'scifi', book_list = pd.DataFrame({'book_name':['S'], 'book_rating':[1]}))
 
     def test_0_init(self):
         '''
@@ -63,7 +62,7 @@ class BookLoverTestSuite(unittest.TestCase):
         self.assertEqual(self.book_lover.email, 'hsolo@millenniumfalcon.com')
         self.assertEqual(self.book_lover.fav_genre, 'scifi')
         self.assertEqual(self.book_lover.num_books, 0)
-        self.assertTrue(self.book_lover.book_list.equals(pd.DataFrame({'book_name':[], 'book_rating':[]})))
+        self.assertTrue(self.book_lover.book_list.equals(pd.DataFrame({'book_name':[], 'book_rating':[]}).astype(dtype = {'book_name': 'str', 'book_rating': 'int'})))
 
 
     def test_1_add_book(self):
@@ -88,7 +87,6 @@ class BookLoverTestSuite(unittest.TestCase):
         
         self.book_lover.add_book('Star Wars: A New Hope', 5)
         self.assertTrue(self.book_lover.book_list.equals(pd.DataFrame({'book_name':['Star Wars: A New Hope'], 'book_rating':[5]})))
-        # Don't use assert True
 
     def test_2_add_book(self):
         '''

@@ -36,8 +36,7 @@ class BookLover:
         email,
         fav_genre,
         num_books = 0,
-        book_list = None
-        #book_list = pd.DataFrame({'book_name':[], 'book_rating':[]})
+        book_list = pd.DataFrame({'book_name':[], 'book_rating':[]}).astype(dtype = {'book_name': 'str', 'book_rating': 'int'})
     ):
         '''
         Initializes a BookLover
@@ -69,11 +68,7 @@ class BookLover:
         self.email = email
         self.fav_genre = fav_genre
         self.num_books = num_books
-        if not isinstance(book_list, pd.DataFrame):
-            self.book_list = pd.DataFrame({'book_name':[], 'book_rating':[]})
-        else:
-            self.book_list = book_list
-        #self.book_list = book_list
+        self.book_list = book_list
 
     def _get_list_of_book_names(self):
         self.series_of_book_names = self.book_list['book_name']
@@ -104,10 +99,11 @@ class BookLover:
         if (book_name in self._get_list_of_book_names()):
             raise BookAlreadyExistsInBookListException(book_name + ' already exists in the read-book list of ' + self.name + '.')
         else:
-            self.book_list.loc[len(self.book_list.index)] = [book_name, rating]
-
-    def remove_book(self, book_name):
-        self.book_list = self.book_list[self.book_list['book_name'] != book_name]
+            new_book = pd.DataFrame({
+                'book_name': [book_name],
+                'book_rating': [rating]
+            })
+            self.book_list = pd.concat([self.book_list, new_book], ignore_index = True)
 
     def has_read(self, book_name):
         '''
