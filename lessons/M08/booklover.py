@@ -68,7 +68,8 @@ class BookLover:
         self.email = email
         self.fav_genre = fav_genre
         self.num_books = num_books
-        self.book_list = book_list
+        # book_list references an empty data frame of the list __defaults__ of this method of BookLover; this data frame is a class attribute. self.book_list references a instance attribute.
+        self.book_list = book_list.copy()
 
     def _get_list_of_book_names(self):
         self.series_of_book_names = self.book_list['book_name']
@@ -99,11 +100,13 @@ class BookLover:
         if (book_name in self._get_list_of_book_names()):
             raise BookAlreadyExistsInBookListException(book_name + ' already exists in the read-book list of ' + self.name + '.')
         else:
-            new_book = pd.DataFrame({
-                'book_name': [book_name],
-                'book_rating': [rating]
-            })
-            self.book_list = pd.concat([self.book_list, new_book], ignore_index = True)
+            # Raf Alvarado's solution:
+            #new_book = pd.DataFrame({
+            #    'book_name': [book_name],
+            #    'book_rating': [rating]
+            #})
+            #self.book_list = pd.concat([self.book_list, new_book], ignore_index = True)
+            self.book_list.loc[len(self.book_list.index)] = [book_name, rating]
 
     def has_read(self, book_name):
         '''
