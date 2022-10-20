@@ -107,6 +107,7 @@ class BookLover:
             #})
             #self.book_list = pd.concat([self.book_list, new_book], ignore_index = True)
             self.book_list.loc[len(self.book_list.index)] = [book_name, rating]
+            self.num_books += 1
 
     def has_read(self, book_name):
         '''
@@ -176,4 +177,4 @@ class BookLover:
             none
         '''
 
-        return self.book_list[self.book_list > 3]
+        return self.book_list[self.book_list['book_rating'] > 3]
