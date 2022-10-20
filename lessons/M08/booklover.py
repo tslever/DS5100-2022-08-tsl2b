@@ -49,7 +49,7 @@ class BookLover:
             book_list: pd.DataFrame --
                 a data frame with which to initialize this BookLover. Has columns labeled 'book_name' and 'book_rating' and contains read books (i.e., titles of books this BookLover
                 has read and this BookLover's ratings of those books on a scale of 0 to 5, where 0 means this BookLover did not like the book at all, and 5 means this BookLover loved
-                the book). Default pd.DataFrame({'book_name':[], 'book_rating':[]}).
+                the book). Default pd.DataFrame({'book_name':[], 'book_rating':[]}).astype(dtype = {'book_name': str, 'book_rating': int}).
 
         Return values:
             none

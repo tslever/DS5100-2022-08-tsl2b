@@ -86,7 +86,7 @@ class BookLoverTestSuite(unittest.TestCase):
         '''
         
         self.book_lover.add_book('Star Wars: A New Hope', 5)
-        self.assertTrue(self.book_lover.book_list.equals(pd.DataFrame({'book_name':['Star Wars: A New Hope'], 'book_rating':[5]})))
+        self.assertTrue(self.book_lover.book_list.equals(pd.DataFrame({'book_name': ['Star Wars: A New Hope'], 'book_rating': [5]})))
 
     def test_2_add_book(self):
         '''
@@ -102,7 +102,7 @@ class BookLoverTestSuite(unittest.TestCase):
             Runs test_1_add_book twice, catches a BookAlreadyExistsInBookListException thrown when an attempt is made to add a book already in a BookLover's read book list, and confirms that only one book was added to the BookLover's read-book list
 
         Exceptions raised:
-            AssertionError if test_1_add_book succeeds or a BookLover's read-book list does not contain one book
+            AssertionError if test_1_add_book succeeds a second time or a BookLover's read-book list does not contain one book ultimately
 
         Restrictions on when this method can be called:
             none
@@ -114,7 +114,7 @@ class BookLoverTestSuite(unittest.TestCase):
             self.fail()
         except BookAlreadyExistsInBookListException as e:
             pass
-        self.assertTrue(self.book_lover.book_list.equals(pd.DataFrame({'book_name':['Star Wars: A New Hope'], 'book_rating':[5]})))
+        self.assertTrue(self.book_lover.book_list.equals(pd.DataFrame({'book_name': ['Star Wars: A New Hope'], 'book_rating': [5]})))
 
     def test_3_has_read(self):
         '''
