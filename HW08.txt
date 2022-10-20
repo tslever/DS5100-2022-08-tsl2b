@@ -1,0 +1,12 @@
+     1	test_0_init (__main__.BookLoverTestSuite) ... ok
+     2	test_1_add_book (__main__.BookLoverTestSuite) ... ok
+     3	test_2_add_book (__main__.BookLoverTestSuite) ... ok
+     4	test_3_has_read (__main__.BookLoverTestSuite) ... ok
+     5	test_4_has_read (__main__.BookLoverTestSuite) ... ok
+     6	test_5_num_books_read (__main__.BookLoverTestSuite) ... ok
+     7	test_6_fav_books (__main__.BookLoverTestSuite) ... ok
+     8	
+     9	----------------------------------------------------------------------
+    10	Ran 7 tests in 0.043s
+    11	
+    12	OK

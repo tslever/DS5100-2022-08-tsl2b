@@ -49,7 +49,7 @@
     49	            book_list: pd.DataFrame --
     50	                a data frame with which to initialize this BookLover. Has columns labeled 'book_name' and 'book_rating' and contains read books (i.e., titles of books this BookLover
     51	                has read and this BookLover's ratings of those books on a scale of 0 to 5, where 0 means this BookLover did not like the book at all, and 5 means this BookLover loved
-    52	                the book). Default pd.DataFrame({'book_name':[], 'book_rating':[]}).
+    52	                the book). Default pd.DataFrame({'book_name':[], 'book_rating':[]}).astype(dtype = {'book_name': str, 'book_rating': int}).
     53	
     54	        Return values:
     55	            none
@@ -265,7 +265,7 @@
    265	        '''
    266	        
    267	        self.book_lover.add_book('Star Wars: A New Hope', 5)
-   268	        self.assertTrue(self.book_lover.book_list.equals(pd.DataFrame({'book_name':['Star Wars: A New Hope'], 'book_rating':[5]})))
+   268	        self.assertTrue(self.book_lover.book_list.equals(pd.DataFrame({'book_name': ['Star Wars: A New Hope'], 'book_rating': [5]})))
    269	
    270	    def test_2_add_book(self):
    271	        '''
@@ -281,7 +281,7 @@
    281	            Runs test_1_add_book twice, catches a BookAlreadyExistsInBookListException thrown when an attempt is made to add a book already in a BookLover's read book list, and confirms that only one book was added to the BookLover's read-book list
    282	
    283	        Exceptions raised:
-   284	            AssertionError if test_1_add_book succeeds or a BookLover's read-book list does not contain one book
+   284	            AssertionError if test_1_add_book succeeds a second time or a BookLover's read-book list does not contain one book ultimately
    285	
    286	        Restrictions on when this method can be called:
    287	            none
@@ -293,7 +293,7 @@
    293	            self.fail()
    294	        except BookAlreadyExistsInBookListException as e:
    295	            pass
-   296	        self.assertTrue(self.book_lover.book_list.equals(pd.DataFrame({'book_name':['Star Wars: A New Hope'], 'book_rating':[5]})))
+   296	        self.assertTrue(self.book_lover.book_list.equals(pd.DataFrame({'book_name': ['Star Wars: A New Hope'], 'book_rating': [5]})))
    297	
    298	    def test_3_has_read(self):
    299	        '''
